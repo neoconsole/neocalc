@@ -23,5 +23,4 @@ ReferenceAlignment: Right
 SortIncludes: true
 
 SpaceAfterTemplateKeyword: true
-SpaceBeforeParens: Always
 SpaceInEmptyParentheses: false
