@@ -18,7 +18,7 @@ public:
   neomath<T>() {
     m_symbolTable.add_pi();
     m_symbolTable.add_constant("gr", (1.0 + std::sqrt(5.0)) / 2.0);
-    m_symbolTable.add_function("root", root);
+    m_symbolTable.add_constant("e", M_E);
   }
 
   auto compile(const std::string &expr) -> T {
@@ -36,18 +36,6 @@ public:
 
   void addFunction(const std::string &name, T (*function)(T, T)) {
     m_symbolTable.add_function(name, function);
-  }
-
-  constexpr static auto root(T value, T n) -> T {
-    if (n == 0) { throw std::domain_error("Root with zero degree is undefined."); }
-    if (value < 0) {
-      if (std::floor(n) == n) {
-        if (static_cast<int>(n) % 2 != 0) { return -std::pow(-value, T(1) / n); }
-        return std::numeric_limits<T>::quiet_NaN();
-      }
-      return std::numeric_limits<T>::quiet_NaN();
-    }
-    return std::pow(value, T(1) / n);
   }
 
 private:
