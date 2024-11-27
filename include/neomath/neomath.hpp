@@ -38,6 +38,8 @@ public:
     m_symbolTable.add_function(name, function);
   }
 
+  void clear() { m_symbolTable.clear(); }
+
 private:
   exprtk::expression<T> m_expression;
   exprtk::parser<T> m_parser;
